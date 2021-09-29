@@ -2,11 +2,11 @@ package com.implemetacionDDD.modeladotactico.entity.usuario.value;
 import co.com.sofka.domain.generic.ValueObject;
 
 
-public class Usuario implements ValueObject<Usuario.Props> {
+public class Cuenta implements ValueObject<Cuenta.Props> {
     private final String correo;
     private final String contrasena;
 
-    public Usuario(String correo, String contrasena) {
+    public Cuenta(String correo, String contrasena) {
         this.correo = correo;
         this.contrasena = contrasena;
     }

@@ -36,9 +36,7 @@ public class Mascota extends AggregateEvent<MascotaId> {
         events.forEach(mascota::applyEvent);
         return mascota;
 
-
     }
-
     public void agregarConsultaMedica(ConsultaMedicaId consultaMedicaId, Decripcion descripcionConsulta, Fecha fecha) {
         Objects.requireNonNull(consultaMedicaId);
         Objects.requireNonNull(descripcionConsulta);

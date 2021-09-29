@@ -2,12 +2,19 @@ package com.implemetacionDDD.modeladotactico.entity.usuario.value;
 
 import co.com.sofka.domain.generic.ValueObject;
 
-public class TipoCuenta extends ValueObject {
+public class TipoCuenta implements ValueObject<TipoCuenta.TipoCuentaUsuario> {
 
+    public enum TipoCuentaUsuario
+    {
+        ADOPTANTE, VETERINARIO, VETERINARIOADMINISTRATIVO;
+    }
+    private final TipoCuentaUsuario value ;
 
+    public TipoCuenta(TipoCuentaUsuario value) {
+        this.value = value;
+    }
 
-    @Override
-    public Object value() {
-        return null;
+    public TipoCuentaUsuario value() {
+        return value;
     }
 }

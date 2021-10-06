@@ -20,17 +20,17 @@ public class Decripcion implements ValueObject <Decripcion.Props> {
         return new Props() {
             @Override
             public String raza() {
-                return null;
+                return raza;
             }
 
             @Override
             public String edad() {
-                return null;
+                return edad;
             }
 
             @Override
             public String color() {
-                return null;
+                return color;
             }
         };
     }

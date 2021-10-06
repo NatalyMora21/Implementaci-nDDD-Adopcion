@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -27,10 +28,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>co.com.sofka</groupId>
 			<artifactId>domain</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.sofka</groupId>
+			<artifactId>business</artifactId>
 			<version>1.5.0</version>
 		</dependency>
 

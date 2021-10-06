@@ -13,7 +13,7 @@ public class Nombre implements ValueObject<String> {
         if(this.value.isBlank()){
             throw new IllegalAccessException("la descripción no puede ser vacía");
         }
-        if(this.value.length() <= 5){
+        if(this.value.length() <= 2){
             throw new IllegalAccessException("La descripción debe ser mayor a 5 caracteres");
         }
 

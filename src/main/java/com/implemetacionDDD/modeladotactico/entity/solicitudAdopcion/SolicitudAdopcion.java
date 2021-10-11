@@ -5,10 +5,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.implemetacionDDD.modeladotactico.entity.mascota.events.EstadoActualizado;
 import com.implemetacionDDD.modeladotactico.entity.mascota.events.MascotaCreada;
 import com.implemetacionDDD.modeladotactico.entity.mascota.value.MascotaId;
-import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.events.ContratoAgregado;
-import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.events.MascotaAgregada;
-import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.events.ResponsableActualizado;
-import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.events.SolicitudAdopcionCreada;
+import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.events.*;
 import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.value.DocumentoContrato;
 import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.value.Estado;
 import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.value.FechaSolicitud;
@@ -61,6 +58,11 @@ public class SolicitudAdopcion extends AggregateEvent <SolicitudAdopcionId> {
     public void agregarMascota(MascotaId mascotaId) {
         Objects.requireNonNull(mascotaId);
         appendChange(new MascotaAgregada(mascotaId));
+    }
+
+    public void agregarUsuario(UsuarioId usuarioId) {
+        Objects.requireNonNull(usuarioId);
+        appendChange(new UsuarioAgregado(usuarioId));
     }
 
 

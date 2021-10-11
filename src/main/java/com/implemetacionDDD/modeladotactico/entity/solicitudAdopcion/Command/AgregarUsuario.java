@@ -1,9 +1,10 @@
 package com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.Command;
 
+import co.com.sofka.domain.generic.Command;
 import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.value.SolicitudAdopcionId;
 import com.implemetacionDDD.modeladotactico.entity.usuario.value.UsuarioId;
 
-public class AgregarUsuario {
+public class AgregarUsuario  extends Command {
 
     private final SolicitudAdopcionId solicitudAdopcionId;
     private final UsuarioId usuarioId;

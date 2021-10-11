@@ -4,7 +4,7 @@ import co.com.sofka.domain.generic.Identity;
 
 public class MascotaId extends Identity {
 
-    private MascotaId(String id){
+    public MascotaId(String id){
         super(id);
     }
     public static MascotaId  of(String id) {

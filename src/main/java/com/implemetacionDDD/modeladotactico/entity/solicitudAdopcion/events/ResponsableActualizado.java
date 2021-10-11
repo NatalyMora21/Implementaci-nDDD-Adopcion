@@ -6,7 +6,7 @@ import com.implemetacionDDD.modeladotactico.entity.usuario.value.UsuarioId;
 public class ResponsableActualizado extends DomainEvent {
     private final UsuarioId usuarioId;
     public ResponsableActualizado(UsuarioId usuarioId) {
-        super("sofka.mascota.DescripcionMascotaActualizada");
+        super("sofka.solicitudAdopcion.DescripcionMascotaActualizada");
         this.usuarioId= usuarioId;
 
     }

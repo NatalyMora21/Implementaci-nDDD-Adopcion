@@ -23,4 +23,5 @@ public class CrearMascotaUseCase extends UseCase <RequestCommand<CrearMascota>, 
         emit().onResponse(new ResponseEvents(mascota.getUncommittedChanges()));
 
     }
+    
 }

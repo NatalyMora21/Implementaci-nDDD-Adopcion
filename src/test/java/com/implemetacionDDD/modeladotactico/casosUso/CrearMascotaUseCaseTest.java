@@ -20,7 +20,7 @@ class CrearMascotaUseCaseTest {
 
         //Arrange
         var command = new CrearMascota(
-                MascotaId.of("xxx"),
+                MascotaId.of("M-111"),
                 new Nombre("Tom"),
                 new Decripcion("Pastor Aleman", "11", "Café")
         );

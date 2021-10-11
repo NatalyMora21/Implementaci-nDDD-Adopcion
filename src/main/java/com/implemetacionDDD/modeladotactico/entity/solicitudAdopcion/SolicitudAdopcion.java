@@ -6,10 +6,7 @@ import com.implemetacionDDD.modeladotactico.entity.mascota.events.EstadoActualiz
 import com.implemetacionDDD.modeladotactico.entity.mascota.events.MascotaCreada;
 import com.implemetacionDDD.modeladotactico.entity.mascota.value.MascotaId;
 import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.events.*;
-import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.value.DocumentoContrato;
-import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.value.Estado;
-import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.value.FechaSolicitud;
-import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.value.SolicitudAdopcionId;
+import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.value.*;
 import com.implemetacionDDD.modeladotactico.entity.usuario.value.UsuarioId;
 
 import java.util.List;
@@ -41,7 +38,7 @@ public class SolicitudAdopcion extends AggregateEvent <SolicitudAdopcionId> {
         Objects.requireNonNull(estado);
         appendChange(new EstadoActualizado(estado));
     }
-    public void agregarContrato(Contrato contratoId, DocumentoContrato documentoContrato) {
+    public void agregarContrato(ContratoId contratoId, DocumentoContrato documentoContrato) {
         Objects.requireNonNull(documentoContrato);
         Objects.requireNonNull(contratoId);
         appendChange(new ContratoAgregado(contratoId, documentoContrato));

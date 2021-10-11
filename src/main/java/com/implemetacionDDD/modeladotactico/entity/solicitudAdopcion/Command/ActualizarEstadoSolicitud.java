@@ -7,9 +7,9 @@ import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.value.Solic
 public class ActualizarEstadoSolicitud extends Command {
 
     private final SolicitudAdopcionId solicitudAdopcionId;
-    private final Estado.EstadoSolicitudAdopcion estadoSolicitudAdopcion;
+    private final Estado  estadoSolicitudAdopcion;
 
-    public ActualizarEstadoSolicitud(SolicitudAdopcionId solicitudAdopcionId, Estado.EstadoSolicitudAdopcion estadoSolicitudAdopcion) {
+    public ActualizarEstadoSolicitud(SolicitudAdopcionId solicitudAdopcionId, Estado estadoSolicitudAdopcion) {
         this.solicitudAdopcionId = solicitudAdopcionId;
         this.estadoSolicitudAdopcion = estadoSolicitudAdopcion;
     }
@@ -18,7 +18,7 @@ public class ActualizarEstadoSolicitud extends Command {
         return solicitudAdopcionId;
     }
 
-    public Estado.EstadoSolicitudAdopcion getEstadoSolicitudAdopcion() {
+    public Estado getEstadoSolicitudAdopcion() {
         return estadoSolicitudAdopcion;
     }
 }

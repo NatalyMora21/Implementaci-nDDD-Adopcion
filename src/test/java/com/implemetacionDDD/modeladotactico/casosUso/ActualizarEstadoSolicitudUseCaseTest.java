@@ -6,9 +6,11 @@ import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.implemetacionDDD.modeladotactico.entity.mascota.value.MascotaId;
+import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.Command.ActualizarEstadoSolicitud;
 import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.Command.AgregarMascota;
-import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.events.MascotaAgregada;
+import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.events.EstadoSolicitudActualizada;
 import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.events.SolicitudAdopcionCreada;
+import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.value.Estado;
 import com.implemetacionDDD.modeladotactico.entity.solicitudAdopcion.value.SolicitudAdopcionId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,38 +22,36 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-public class AgregarMascotaSolicitudUseCaseTest {
+public class ActualizarEstadoSolicitudUseCaseTest {
 
-    private static final String MASCOTA_ID = "M-111";
+    private static final String SOLICITUD_ID = "M-111";
     @Mock
     private DomainEventRepository repository;
 
     @Test
+    void actualizarEstadoSolicitud () {
 
-    void agregarMascotaSolicitudAdopcion() {
         //arrange
-        var command = new AgregarMascota(
-                SolicitudAdopcionId.of("A-111"),
-                new MascotaId(MASCOTA_ID)
+        var command = new ActualizarEstadoSolicitud(
+                SolicitudAdopcionId.of(SOLICITUD_ID),
+                new Estado(Estado.EstadoSolicitudAdopcion.APROBADA)
         );
 
-        var useCase = new AgregarMascotaUseCase();
-        Mockito.when(repository.getEventsBy(MASCOTA_ID)).thenReturn(EventStored());
+        var useCase = new ActualizarEstadoSolicitudUseCase();
+        Mockito.when(repository.getEventsBy(SOLICITUD_ID)).thenReturn(EventStored());
         useCase.addRepository(repository);
 
         //act
-        var events = UseCaseHandler.
-                getInstance().
-                setIdentifyExecutor(MASCOTA_ID).
-                syncExecutor(useCase,new RequestCommand<>(command)).
-                orElseThrow().
-                getDomainEvents();
+        var events = UseCaseHandler.getInstance().
+                syncExecutor(useCase, new RequestCommand<>(command))
+                .orElseThrow().getDomainEvents();
 
-        //asert
-        var eventMascotaAgregada = (MascotaAgregada) events.get(1);
-        //System.out.println(eventMascotaAgregada);
-        Assertions.assertEquals(MASCOTA_ID, eventMascotaAgregada.getMascotaId().value());
-        Mockito.verify(repository).getEventsBy(MASCOTA_ID);
+        //assert
+        System.out.println(events.get(1));
+        var event = (EstadoSolicitudActualizada)events.get(0);
+
+        Assertions.assertEquals(Estado.EstadoSolicitudAdopcion.APROBADA, event.getEstadoSolicitudAdopcion());
+        Mockito.verify(repository).getEventsBy(SOLICITUD_ID);
 
     }
 
@@ -60,5 +60,8 @@ public class AgregarMascotaSolicitudUseCaseTest {
                 new SolicitudAdopcionCreada()
         );
     }
+
+
+
 
 }

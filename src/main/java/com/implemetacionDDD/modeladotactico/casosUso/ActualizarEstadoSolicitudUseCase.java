@@ -12,7 +12,7 @@ public class ActualizarEstadoSolicitudUseCase extends UseCase <RequestCommand <A
     public void executeUseCase(RequestCommand<ActualizarEstadoSolicitud> actualizarEstadoSolicitudRequestCommand) {
         var command = actualizarEstadoSolicitudRequestCommand.getCommand();
         var solicitudAdopcion = SolicitudAdopcion.from(command.getSolicitudAdopcionId(),retrieveEvents(command.getSolicitudAdopcionId().value()));
-        solicitudAdopcion.actualizarEstado(command.getEstadoSolicitudAdopcion());
+        solicitudAdopcion.actualizarEstado(command.getEstadoSolicitudAdopcion().value());
         emit().onResponse(new ResponseEvents(solicitudAdopcion.getUncommittedChanges()));
     }
 }
